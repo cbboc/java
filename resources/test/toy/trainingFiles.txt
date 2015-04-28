@@ -1,3 +1,0 @@
-2 
-training/toy.txt
-training/toy.txt
