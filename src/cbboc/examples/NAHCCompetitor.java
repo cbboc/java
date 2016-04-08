@@ -5,7 +5,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import cbboc.CBBOC2015;
+import cbboc.CBBOC;
 import cbboc.Competitor;
 import cbboc.ObjectiveFn;
 import cbboc.ProblemClass;
@@ -81,7 +81,7 @@ public final class NAHCCompetitor extends Competitor {
 	public static void main( String [] args ) throws IOException {
 
 		Competitor competitor = new NAHCCompetitor();
-		CBBOC2015.run( competitor );
+		CBBOC.run( competitor );
 		
 		System.out.println( "All done." );
 	}

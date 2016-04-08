@@ -13,7 +13,7 @@ import jeep.math.LinearInterpolation;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.math3.stat.StatUtils;
 
-import cbboc.CBBOC2015;
+import cbboc.CBBOC;
 import cbboc.Competitor;
 import cbboc.ObjectiveFn;
 import cbboc.ProblemClass;
@@ -200,7 +200,7 @@ public final class SAHHCompetitor extends Competitor {
 	public static void main( String [] args ) throws IOException {
 		
 		Competitor competitor = new SAHHCompetitor( TrainingCategory.SHORT );
-		CBBOC2015.run( competitor );
+		CBBOC.run( competitor );
 
 		Diag.println( "minDiffDivT: " + minDiffDivT + "exp:" + Math.exp( minDiffDivT ) );
 		Diag.println( "maxDiffDivT:" + maxDiffDivT + "exp:" + Math.exp( maxDiffDivT ) );	

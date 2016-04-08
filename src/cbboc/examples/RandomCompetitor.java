@@ -1,13 +1,11 @@
 package cbboc.examples;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.List;
 
-import cbboc.CBBOC2015;
+import cbboc.CBBOC;
 import cbboc.Competitor;
 import cbboc.ObjectiveFn;
-import cbboc.ProblemClass;
 import cbboc.TrainingCategory;
 import cbboc.util.RNG;
 
@@ -58,7 +56,7 @@ public final class RandomCompetitor extends Competitor {
 	public static void main( String [] args ) throws IOException {
 
 		Competitor competitor = new RandomCompetitor();
-		CBBOC2015.run( competitor );
+		CBBOC.run( competitor );
 	}
 }
 
