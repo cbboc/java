@@ -20,6 +20,12 @@ public final class ProblemInstance {
 	private int numGenes;
 	private int maxEvalsPerInstance;
 	private int K;
+
+	// Change for 2016:
+	// Instead of each file having N+1 rows (header and N functions), 
+	// where N is the number of problem variables, each now has M+1 rows, 
+	// with the value of M added to the end of the header.
+	private int M;
 	
 	private List< Pair< int [], double [] > 
 		> data = new ArrayList< Pair< int [], double [] > >();
@@ -38,9 +44,17 @@ public final class ProblemInstance {
 
 			numGenes = s.nextInt();
 			maxEvalsPerInstance = s.nextInt();
-			K = s.nextInt();
+
+			// Previously the number of variables in each row was given by the third value in the header, such that if that value was K, each row had K+1 variables. I've changed this such that the third value now directly says how many variables are in each row.
+			// K = s.nextInt();
+			K = s.nextInt() - 1;
 			
-			for( int i=0; i<numGenes; ++i ) {
+			M = s.nextInt();			
+		
+			// final int numRows = numGenes;
+			final int numRows = M;
+			// for( int i=0; i<numGenes; ++i ) {
+			for( int i=0; i<numRows; ++i ) {			
 				line = r.readLine();
 				
 				s = new Scanner( line );
@@ -159,4 +173,4 @@ public final class ProblemInstance {
 	}
 }
 
-// ENd ///////////////////////////////////////////////////////////////
+// End ///////////////////////////////////////////////////////////////
