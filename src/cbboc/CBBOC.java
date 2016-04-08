@@ -23,10 +23,10 @@ import com.google.gson.Gson;
 
 //////////////////////////////////////////////////////////////////////
 
-public final class CBBOC2015 {
+public final class CBBOC {
 
 	private final static long BASE_TIME_PER_INSTANCE_IN_MILLIS = 250 * 1000L;	
-	public static Logger LOGGER = Logger.getLogger( CBBOC2015.class.getName() );
+	public static Logger LOGGER = Logger.getLogger( CBBOC.class.getName() );
 
 	public static final boolean LOGGING_ENABLED = false;
 	static {
@@ -220,7 +220,7 @@ public final class CBBOC2015 {
 		OutputResults results = new OutputResults( client.getClass().getName(), 
 				timestamp, problemClassName, problemClass, actualTrainingTime, actualTestingTime );
 		
-		String outputPath = path + "/results/" + "CBBOC2015results-" + client.getClass().getCanonicalName() + "-" + problemClassName + "-" + timestamp + ".json";
+		String outputPath = path + "/results/" + "CBBOC2016results-" + client.getClass().getCanonicalName() + "-" + problemClassName + "-" + timestamp + ".json";
 		PrintWriter pw = new PrintWriter( new FileOutputStream( new File( outputPath ) ) );
 		pw.println( results.toJSonString() );
 		pw.close();
