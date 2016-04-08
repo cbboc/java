@@ -46,24 +46,21 @@ public final class ProblemInstance {
 			maxEvalsPerInstance = s.nextInt();
 
 			// Previously the number of variables in each row was given by the third value in the header, such that if that value was K, each row had K+1 variables. I've changed this such that the third value now directly says how many variables are in each row.
-			// K = s.nextInt();
-			K = s.nextInt() - 1;
+			K = s.nextInt();
 			
 			M = s.nextInt();			
 		
-			// final int numRows = numGenes;
 			final int numRows = M;
-			// for( int i=0; i<numGenes; ++i ) {
 			for( int i=0; i<numRows; ++i ) {			
 				line = r.readLine();
 				
 				s = new Scanner( line );
 				
-				int [] iarray = new int [ K + 1 ];
-				for( int j=0; j<K + 1; ++j )
+				int [] iarray = new int [ K ];
+				for( int j=0; j<K; ++j )
 					iarray[ j ] = s.nextInt();
 
-				final int numFks = 1 << ( K + 1 );
+				final int numFks = 1 << K;
 				double [] darray = new double [ numFks ];
 				for( int j=0; j<numFks; ++j )
 					darray[ j ] = s.nextDouble();
@@ -140,7 +137,7 @@ public final class ProblemInstance {
 	
 	private static boolean allValidSize( List< Pair< int [], double [] > > data, int k ) {
 		for( Pair< int [], double [] > p : data )
-			if( p.getLeft().length != k + 1 || p.getRight().length != 1 << ( k + 1 ) )
+			if( p.getLeft().length != k || p.getRight().length != 1 << k )
 				return false;
 		
 		return true;
@@ -158,7 +155,6 @@ public final class ProblemInstance {
 	
 	public static void main( String [] args ) throws IOException {
 		String root = System.getProperty( "user.dir" );
-		// String path = root + "/resources/" + "00000.txt";
 		String path = root + "/resources/" + "toy.txt";
 		
 		InputStream is = new FileInputStream( path );
