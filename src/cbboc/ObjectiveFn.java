@@ -33,12 +33,12 @@ public final class ObjectiveFn {
 		
 		final long timeNow = System.currentTimeMillis();
 		if( timingMode == TimingMode.TRAINING ) {
-			if( timeNow > CBBOC2015.trainingEndTime )
-				throw new CBBOC2015.TimeExceededException();				
+			if( timeNow > CBBOC.trainingEndTime )
+				throw new CBBOC.TimeExceededException();				
 		}
 		else if( timingMode == TimingMode.TESTING ) {
-			if( timeNow > CBBOC2015.testingEndTime )
-				throw new CBBOC2015.TimeExceededException();
+			if( timeNow > CBBOC.testingEndTime )
+				throw new CBBOC.TimeExceededException();
 		}
 		else {
 			throw new IllegalStateException();
@@ -47,7 +47,7 @@ public final class ObjectiveFn {
 		///////////////////////////
 		
 		if( remainingEvaluations.getValue() <= 0 ) {
-			throw new CBBOC2015.EvaluationsExceededException();
+			throw new CBBOC.EvaluationsExceededException();
 		}
 		else {
 			final double value = instance.value( candidate );
