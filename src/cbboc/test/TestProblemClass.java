@@ -19,20 +19,21 @@ public class TestProblemClass {
 	@Test
 	public void test() throws IOException {
 		String root = System.getProperty( "user.dir" );
-		String path = root + "/resources/test/toy";
+		String path = root + "/resources/sample1";
 		
 		ProblemClass noTraining = new ProblemClass( Paths.get( path ), TrainingCategory.NONE );
 		assertEquals( 0, noTraining.getTrainingInstances().size() );
-		assertEquals( 1, noTraining.getTestingInstances().size() );
+		assertEquals( 50, noTraining.getTestingInstances().size() );
 		
 		ProblemClass shortTraining = new ProblemClass( Paths.get( path ), TrainingCategory.SHORT );
-		assertEquals( 1, shortTraining.getTrainingInstances().size() );
-		assertEquals( 1, shortTraining.getTestingInstances().size() );		
+		assertEquals( 200, shortTraining.getTrainingInstances().size() );
+		assertEquals( 50, shortTraining.getTestingInstances().size() );		
 
 		ProblemClass longTraining = new ProblemClass( Paths.get( path ), TrainingCategory.LONG );
-		assertEquals( 2, longTraining.getTrainingInstances().size() );
-		assertEquals( 1, longTraining.getTestingInstances().size() );		
+		assertEquals( 200, longTraining.getTrainingInstances().size() );
+		assertEquals( 50, longTraining.getTestingInstances().size() );		
 	}
 }
 
-// End //////////////////////////////////////////////////////////////.
+// End //////////////////////////////////////////////////////////////
+
