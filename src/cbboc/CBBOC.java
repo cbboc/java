@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 
 import jeep.lang.Diag;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.tuple.Pair;
 
 import com.google.gson.Gson;
@@ -121,9 +122,9 @@ public final class CBBOC {
 		///////////////////////////
 
 		private static final class Result {
-			private final long remainingEvaluations;			
-			private final long remainingEvaluationsWhenBestReached;
-			private final double bestValue;
+			final long remainingEvaluations;			
+			final long remainingEvaluationsWhenBestReached;
+			final double bestValue;
 			
 			///////////////////////////
 			
@@ -160,6 +161,45 @@ public final class CBBOC {
 
 		///////////////////////////
 		
+		static class ResultStats {
+			
+			final double bestValueMean, bestValueSD;
+			final double remainingEvaluationsWhenBestReachedMean, remainingEvaluationsWhenBestReachedSD;
+			
+			public ResultStats( double bestValueMean, double bestValueSD, double remainingEvaluationsWhenBestReachedMean, double remainingEvaluationsWhenBestReachedSD ) {
+				this.bestValueMean = bestValueMean;
+				this.bestValueSD = bestValueSD;
+				this.remainingEvaluationsWhenBestReachedMean = remainingEvaluationsWhenBestReachedMean;
+				this.remainingEvaluationsWhenBestReachedSD = remainingEvaluationsWhenBestReachedSD;
+			}
+			
+			@Override
+			public String toString() {
+				return ToStringBuilder.reflectionToString( this );
+			}
+		}
+		
+		///////////////////////////
+		
+		private static ResultStats resultStats( List< Result > results ) {
+			
+			double [] bestValues = new double [ results.size() ];
+			double [] remainingEvaluationsWhenBestReached = new double [ results.size() ];
+			for( int i=0; i<results.size(); ++i ) {
+				bestValues[ i ] = results.get( i ).bestValue;
+				remainingEvaluationsWhenBestReached[ i ] = results.get( i ).remainingEvaluationsWhenBestReached;
+			}
+			
+			final double bestValueMean = org.apache.commons.math3.stat.StatUtils.mean( bestValues );
+			final double bestValueSD = Math.sqrt( org.apache.commons.math3.stat.StatUtils.variance( bestValues ) );
+			final double remainingEvaluationsWhenBestReachedMean = org.apache.commons.math3.stat.StatUtils.mean( remainingEvaluationsWhenBestReached );
+			final double remainingEvaluationsWhenBestReachedSD = Math.sqrt( org.apache.commons.math3.stat.StatUtils.variance( remainingEvaluationsWhenBestReached ) );
+			
+			return new ResultStats( bestValueMean, bestValueSD, remainingEvaluationsWhenBestReachedMean, remainingEvaluationsWhenBestReachedSD );
+		}
+		
+		///////////////////////////		
+		
 		public String toJSonString() {
 			Gson gson = new Gson();
 			String result = gson.toJson( this );
@@ -170,7 +210,7 @@ public final class CBBOC {
 	
 	////////////////////////////////	
 	
-	public static void run( Competitor client ) throws IOException {
+	public static OutputResults run( Competitor client ) throws IOException {
 		
 		String problemClassName;
 		
@@ -228,7 +268,10 @@ public final class CBBOC {
 		///////////////////////////		
 		
 		System.out.println( results.toJSonString() );
+		// System.out.println( "Testing result stats: " + OutputResults.resultStats( results.testingResults ) );
+		return results;
 	}
 }
 
 // End ///////////////////////////////////////////////////////////////
+
