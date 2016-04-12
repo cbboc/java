@@ -88,7 +88,7 @@ public final class ProblemInstance {
 			throw new IllegalArgumentException( "candidate of length " + getNumGenes() + " expected, found " + candidate.length );
 		
 		double total = 0.0;
-		for( int i=0; i<getNumGenes(); ++i ) {
+		for( int i=0; i<M; ++i ) {
 			int [] varIndices = data.get( i ).getLeft();
 			int fnTableIndex = 0;
 			for( int j=0; j<varIndices.length; ++j ) {
