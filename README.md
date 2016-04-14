@@ -7,5 +7,5 @@ or else download the zipfile ('Download Zip' button, above) and import into Ecli
 
 Some example competitors to run can be found in the cbboc.examples package.
 
-Alternatively, running these examples using java from a command prompt is of course possible, 
+Alternatively, compiling and running these examples using javac/java from a command prompt is of course possible, 
 provided you also include the jarfiles in the lib3rd directory on the classpath.
