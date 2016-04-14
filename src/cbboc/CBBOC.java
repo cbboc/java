@@ -143,8 +143,8 @@ public final class CBBOC {
 			this.competitorName = competitorName;
 			this.problemClassName = problemClassName; 
 			this.datetime = datetime; 
-			Diag.println( problemClass );
-			Diag.println( problemClass.getTrainingCategory() );			
+			// Diag.println( problemClass );
+			// Diag.println( problemClass.getTrainingCategory() );			
 			this.trainingCategory = problemClass.getTrainingCategory();
 			for( ObjectiveFn o : problemClass.getTrainingInstances() ) {
 				Pair< Long, Double > p = o.getRemainingEvaluationsAtBestValue();
