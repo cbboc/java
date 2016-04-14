@@ -112,7 +112,8 @@ public final class CBBOC {
 		final String competitorLanguage = "Java";
 		final String problemClassName;		
 		// final String trainingCategory;
-		final TrainingCategory trainingCategory;		
+		// final TrainingCategory trainingCategory;		
+		final int trainingCategory;		
 		final String datetime;
 		final List< Result > trainingResults = new ArrayList< Result >();
 		final long trainingWallClockUsage;
@@ -145,7 +146,8 @@ public final class CBBOC {
 			this.datetime = datetime; 
 			// Diag.println( problemClass );
 			// Diag.println( problemClass.getTrainingCategory() );			
-			this.trainingCategory = problemClass.getTrainingCategory();
+			// this.trainingCategory = problemClass.getTrainingCategory();
+			this.trainingCategory = problemClass.getTrainingCategory().getNumericCode();
 			for( ObjectiveFn o : problemClass.getTrainingInstances() ) {
 				Pair< Long, Double > p = o.getRemainingEvaluationsAtBestValue();
 				this.trainingResults.add( new Result( o.getRemainingEvaluations(), p.getLeft(), p.getRight() ) );
