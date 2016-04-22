@@ -26,7 +26,7 @@ import com.google.gson.Gson;
 
 public final class CBBOC {
 
-	private final static long BASE_TIME_PER_INSTANCE_IN_MILLIS = 250 * 1000L;	
+	private final static long BASE_TIME_PER_INSTANCE_IN_MILLIS = 60 * 1000L;
 	public static Logger LOGGER = Logger.getLogger( CBBOC.class.getName() );
 
 	public static final boolean LOGGING_ENABLED = false;
